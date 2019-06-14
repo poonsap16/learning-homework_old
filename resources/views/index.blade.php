@@ -1,20 +1,38 @@
 @extends('layouts.app')
 
-@section('title', 'Learning Laravel-->Home')
+@section('title', 'Task Index')
 
-<header class="fix-top">
-    <div class="container bg-dark">
-    IT Support
-    </div>
-</header>
-
-
-<footer class="footer mt-auto py-3">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-  </div>
-</footer><footer class="footer mt-auto py-3">
-  <div class="container">
-    <span class="text-muted">Place sticky footer content here.</span>
-  </div>
-</footer>
+@include('layouts._form')
+@section('contents')
+	<table class="table">
+		<thead class="thead-light">
+		   	<tr>
+		      <th scope="col">#</th>
+		      <th scope="col">ประเภทงาน</th>
+		      <th scope="col">ชื่องาน</th>
+		      <th scope="col">รายละเอียด</th>
+		      <th scope="col">สถานะ</th>
+		    </tr>
+		</thead>
+		<tbody>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>Mark</td>
+		      <td>Otto</td>
+		      <td>@mdo</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">2</th>
+		      <td>Jacob</td>
+		      <td>Thornton</td>
+		      <td>@fat</td>
+		    </tr>
+		    <tr>
+		      <th scope="row">3</th>
+		      <td>Larry</td>
+		      <td>the Bird</td>
+		      <td>@twitter</td>
+		    </tr>
+		</tbody>
+	</table>
+@endsection

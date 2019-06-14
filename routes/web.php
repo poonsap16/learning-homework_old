@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('intro');
 });
 
-Route::get('/index', function () {
+Route::get('/tasks', function () {
+    return view('index');
+});
+
+Route::post('/tasks', function () {
+    return \App\Task::cteate(request()->all());
     return view('index');
 });
