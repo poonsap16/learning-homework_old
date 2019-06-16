@@ -3,6 +3,7 @@
 @section('title', 'Task Index')
 
 @include('layouts._form')
+
 @section('contents')
 	<table class="table">
 		<thead class="thead-light">
@@ -15,24 +16,15 @@
 		    </tr>
 		</thead>
 		<tbody>
+			@foreach($tasks as $task)
 		    <tr>
-		      <th scope="row">1</th>
-		      <td>Mark</td>
-		      <td>Otto</td>
-		      <td>@mdo</td>
+		      <th scope="row">{{ $task->id }}</th>
+		      <td>{{ $task->type }}</td>
+		      <td>{{ $task->name }}</td>
+		      <td>{{ $task->detail }}</td>
+		      <td>{{ $task->status ? 'Complete' : 'No Complete' }}</td>
 		    </tr>
-		    <tr>
-		      <th scope="row">2</th>
-		      <td>Jacob</td>
-		      <td>Thornton</td>
-		      <td>@fat</td>
-		    </tr>
-		    <tr>
-		      <th scope="row">3</th>
-		      <td>Larry</td>
-		      <td>the Bird</td>
-		      <td>@twitter</td>
-		    </tr>
+		    @endforeach
 		</tbody>
 	</table>
 @endsection

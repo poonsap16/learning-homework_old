@@ -16,10 +16,25 @@ Route::get('/', function () {
 });
 
 Route::get('/tasks', function () {
-    return view('index');
+    return view('index')->with(['tasks' => \App\Task::all()]);
 });
 
 Route::post('/tasks', function () {
-    return \App\Task::cteate(request()->all());
+
+	$taskCreateValidateRules = [
+		'type' => 'required',
+		'name' => 'requred'
+	];
+
+	request()->validate($taskCreateValidateRules);
+
+	$data = request()->all();
+
+	if(request()->has('status')) {
+		$data['status'] = true;
+	}
+
+
+    return \App\Task::create($data);
     return view('index');
 });

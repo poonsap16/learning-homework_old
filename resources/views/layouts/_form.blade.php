@@ -1,4 +1,10 @@
 <div class="container">
+	<!-- {{ var_dump($errors) }} -->
+	@if($errors->any())
+		@foreach($errors->all() as $errors)
+			<div>{{ $errors }}</div>
+		@endforeach
+	@endif
 <form class="my-4" action="/tasks" method="POST">
 	@csrf
 <div class="form-row">
