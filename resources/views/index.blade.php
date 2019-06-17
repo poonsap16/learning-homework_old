@@ -23,6 +23,18 @@
 		      <td>{{ $task->name }}</td>
 		      <td>{{ $task->detail }}</td>
 		      <td>{{ $task->status ? 'Complete' : 'No Complete' }}</td>
+		      <td>
+		      	<form id="check-complete-{{ $task->id }}" action="/tasks/{{ $task->id }}" method="POST" style="display: none;">
+		      		@csrf
+		      		@method('patch')
+		      		<input type="hidden" name="status" value="1">
+		      	</form>
+		      	@if(!$task->status)
+		      		<button class="brn btn-sm btn-info"
+onclick="document.getElementById('check-complete-{{ $task->id }}').submit()""
+		      		>ทำเสร็จแล้ว</button>
+		      	@endif
+		      </td>
 		    </tr>
 		    @endforeach
 		</tbody>

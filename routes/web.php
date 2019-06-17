@@ -23,10 +23,16 @@ Route::post('/tasks', function () {
 
 	$taskCreateValidateRules = [
 		'type' => 'required',
-		'name' => 'requred'
+		'name' => 'required'
 	];
 
-	request()->validate($taskCreateValidateRules);
+	$taskcreateValidateMessages = [
+		'type.required' => 'ลงข้อมูลประเภทงาน ด้วยครับ',
+		'name.required' => 'ลงข้อมูลชื่องาน ด้วยครับ',
+	];
+
+	request()->validate($taskCreateValidateRules, $taskcreateValidateMessages);
+
 
 	$data = request()->all();
 
@@ -35,6 +41,15 @@ Route::post('/tasks', function () {
 	}
 
 
-    return \App\Task::create($data);
-    return view('index');
+    // return \App\Task::create($data);
+    // return view('index');
+
+    \App\Task::create($data);
+    return back();
+});
+
+Route::patch('/tasks/{task}', function (\App\Task $task) {
+	$task->update(request()->all());
+    //return $task;
+    return back();
 });

@@ -1,9 +1,23 @@
 <div class="container">
 	<!-- {{ var_dump($errors) }} -->
-	@if($errors->any())
-		@foreach($errors->all() as $errors)
+<!-- 	@if($errors->any())
+		@foreach($errors->all() as $error)
 			<div>{{ $errors }}</div>
 		@endforeach
+	@endif -->
+
+	@if ($errors->any())
+    <div class="alert alert-danger" role="alert">
+    	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    		<span aria-hidden="true">&times;</span>
+    	</button>
+    	<h3>เกิดข้อผิดพลาด</h3>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 	@endif
 <form class="my-4" action="/tasks" method="POST">
 	@csrf
