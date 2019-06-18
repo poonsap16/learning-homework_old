@@ -27,8 +27,8 @@ Route::post('/tasks', function () {
 	];
 
 	$taskcreateValidateMessages = [
-		'type.required' => 'ลงข้อมูลประเภทงาน ด้วยครับ',
-		'name.required' => 'ลงข้อมูลชื่องาน ด้วยครับ',
+		'type.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'type'".').focus()"> <i>ประเภทงาน</i> <b>ด้วยครับ</b>',
+		'name.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'name'".').focus()"> <i>ชื่องาน</i> <b>ด้วยครับ</b>',
 	];
 
 	request()->validate($taskCreateValidateRules, $taskcreateValidateMessages);
@@ -52,4 +52,12 @@ Route::patch('/tasks/{task}', function (\App\Task $task) {
 	$task->update(request()->all());
     //return $task;
     return back();
+});
+
+Route:: get('/tasks/{id}', function($id){
+//   return \App\Task::find($id);  
+ $task = \App\Task::find($id); 
+
+ $tasks = App\Task::all();
+  return view('index')->with(['task' => $task,'tasks' => $tasks]);  
 });

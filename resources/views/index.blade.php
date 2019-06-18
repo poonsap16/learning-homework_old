@@ -19,7 +19,7 @@
 			@foreach($tasks as $task)
 		    <tr>
 		      <th scope="row">{{ $task->id }}</th>
-		      <td>{{ $task->type }}</td>
+		      <td>{{ $task->getTypeName() }}</td>
 		      <td>{{ $task->name }}</td>
 		      <td>{{ $task->detail }}</td>
 		      <td>{{ $task->status ? 'Complete' : 'No Complete' }}</td>
@@ -31,9 +31,12 @@
 		      	</form>
 		      	@if(!$task->status)
 		      		<button class="brn btn-sm btn-info"
-onclick="document.getElementById('check-complete-{{ $task->id }}').submit()""
+onclick="document.getElementById('check-complete-{{ $task->id }}').submit()"
 		      		>ทำเสร็จแล้ว</button>
 		      	@endif
+		      </td>
+		      <td>
+		      	<a class="btn btn-sm btn-warning" role="button" href="{{ url('/tasks',$task->id) }}">Edit</a>
 		      </td>
 		    </tr>
 		    @endforeach
