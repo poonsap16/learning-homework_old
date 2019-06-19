@@ -38,6 +38,16 @@ onclick="document.getElementById('check-complete-{{ $task->id }}').submit()"
 		      <td>
 		      	<a class="btn btn-sm btn-warning" role="button" href="{{ url('/tasks',$task->id) }}">Edit</a>
 		      </td>
+<!-- 		      <td>
+		      	<a class="btn btn-sm btn-danger" role="button" href="{{ url('/tasks',$task->id) }}">Delete</a>
+		      </td>
+ -->
+				<td><form method="POST" action="{{ url('/tasks', $task->id) }}">
+				    {{ csrf_field() }}
+				    {{ method_field('DELETE') }}
+				    <button class="brn btn-sm btn-danger" type="submit">Delete</button>
+				</form>
+				</td>
 		    </tr>
 		    @endforeach
 		</tbody>

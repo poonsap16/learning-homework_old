@@ -19,7 +19,12 @@
         </ul>
     </div>
 	@endif
-<form class="my-4" action="/tasks" method="POST">
+@if(isset($task))
+	<form action="{{ url('/tasks',$task->id)}}" method="post">
+	<input type="hidden" name="_method" value="PUT">
+@else
+	<form class="my-4" action="{{ url('/tasks') }}" method="POST">
+@endif
 	@csrf
 <div class="form-row">
 	<div class="form-group col-md-6">
@@ -64,11 +69,14 @@
 <!-- 			<input class="form-check-input" type="checkbox" value="0" id="status" name="status">
 			<label class="form-check-label" for="status">Completed</label> -->
 
-			<input class="form-check-input" type="checkbox" id="status" name="status" value="0" {{old('status',isset($task) ? $task->status:'') == 1 ? 'checked' : ''}}>
+			<input class="form-check-input" type="checkbox" id="status" name="status" value="1" {{old('status',isset($task) ? $task->status:'') == 1 ? 'checked' : ''}}>
 			<label class="form-check-label" for="status">Completed</label>
 		</div>
 	</div>
 
+<!-- <label class="form-check-inline">
+    <input class="form-check-input" type="checkbox" name="hobby[]" value="1" {{ (is_array(old('hobby')) and in_array(1, old('hobby'))) ? ' checked' : '' }}> football
+</label> -->
 
 
 	<button type="submit" class="btn btn-primary">Create</button>

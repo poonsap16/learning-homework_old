@@ -15,49 +15,66 @@ Route::get('/', function () {
     return view('intro');
 });
 
-Route::get('/tasks', function () {
-    return view('index')->with(['tasks' => \App\Task::all()]);
-});
+// Route::get('/tasks', function () {
+//     return view('index')->with(['tasks' => \App\Task::all()]);
+// });
+Route::get('/tasks','TaskController@index');
 
-Route::post('/tasks', function () {
+// Route::post('/tasks', function () {
 
-	$taskCreateValidateRules = [
-		'type' => 'required',
-		'name' => 'required'
-	];
+// 	$taskCreateValidateRules = [
+// 		'type' => 'required',
+// 		'name' => 'required'
+// 	];
 
-	$taskcreateValidateMessages = [
-		'type.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'type'".').focus()"><i>ประเภทงาน</i> <b>ด้วยครับ</b>',
-		'name.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'name'".').focus()"> <i>ชื่องาน</i><b>ด้วยครับ</b>',
-	];
+// 	$taskcreateValidateMessages = [
+// 		'type.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'type'".').focus()"><i>ประเภทงาน</i> <b>ด้วยครับ</b>',
+// 		'name.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'name'".').focus()"> <i>ชื่องาน</i><b>ด้วยครับ</b>',
+// 	];
 
-	request()->validate($taskCreateValidateRules, $taskcreateValidateMessages);
-
-
-	$data = request()->all();
-
-	if(request()->has('status')) {
-		$data['status'] = true;
-	}
+// 	request()->validate($taskCreateValidateRules, $taskcreateValidateMessages);
 
 
-    // return \App\Task::create($data);
-    // return view('index');
+// 	$data = request()->all();
 
-    \App\Task::create($data);
-    return back();
-});
+// 	if(request()->has('status')) {
+// 		$data['status'] = true;
+// 	}
 
-Route::patch('/tasks/{task}', function (\App\Task $task) {
-	$task->update(request()->all());
-    //return $task;
-    return back();
-});
 
-Route:: get('/tasks/{id}', function($id){
-//   return \App\Task::find($id);  
- $task = \App\Task::find($id); 
+//     // return \App\Task::create($data);
+//     // return view('index');
 
- $tasks = App\Task::all();
-  return view('index')->with(['task' => $task,'tasks' => $tasks]);  
-});
+//     \App\Task::create($data);
+//     return back();
+// });
+Route::post('/tasks','TaskController@create');
+
+// Route::patch('/tasks/{task}', function (\App\Task $task) {
+// 	$task->update(request()->all());
+//     //return $task;
+//     return back();
+// });
+Route::patch('/tasks/{task}','TaskController@updateStatus');
+
+// Route:: get('/tasks/{id}', function($id){
+// //   return \App\Task::find($id);  
+//  $task = \App\Task::find($id); 
+
+//  $tasks = App\Task::all();
+//   return view('index')->with(['task' => $task,'tasks' => $tasks]);  
+// });
+Route::get('tasks/{id}','TaskController@edit');
+
+// Route::put('/tasks/{id}',function(Illuminate\Http\Request $request,$id){
+//     $validation = $request->validate([
+//         'type' => 'required',
+//         'name' => 'required|max:255',
+//         'status' => 'required'
+//     ]);
+    
+//     App\Task::find($id)->update($request->all());
+//     return redirect()->back()->with('success','Edited Successfully !!');
+// });
+Route::put('tasks/{id}','TaskController@update');
+Route::delete('tasks/{id}','TaskController@destroy');
