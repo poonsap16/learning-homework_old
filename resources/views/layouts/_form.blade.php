@@ -40,7 +40,7 @@
                 <option value="4" {{old('type',isset($task) ? $task->type:'') == 4 ? 'selected' : ''}}>Activity</option>
             </select>
                 @error('type')
-                	<small class = "form-text text-danger">{{ $message}} </small>
+                	<small class = "form-text text-danger">{{ $message }} </small>
                 @enderror
 
 	</div>
@@ -49,19 +49,22 @@
 <!-- 		<input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"> -->
 			<input type="text" class="form-control" id="name" name="name" value="{{old('name',isset($task) ? $task->name:'')}}">
         		@error('name')
-                	<small class = "form-text text-danger">{{ $message}} </small>
+                	<small class = "form-text text-danger">{{ $message }} </small>
                 @enderror
 	</div>
 </div>
 	<div class="form-group">
 		<label for="detail">รายละเอียด</label>
 <!-- 		<textarea class="form-control" id="detail" name="detail"></textarea> -->
-			<input type="text" class="form-control" id="detail" name="detail"  value="{{old('detail',isset($task) ? $task->detail:'')}}">
-<!-- 			<textarea class="form-control" id="detail" name="detail" value="{{old('detail',isset($task) ? $task->detail:'')}}"></textarea> -->
+		<input type="text" class="form-control" id="detail" name="detail"  value="{{old('detail',isset($task) ? $task->detail:'')}}">
+<!-- 		<textarea class="form-control" id="detail" name="detail" value="value="{{ old('detail',isset($task) ? $task->detail:'')}}"></textarea> -->
 	</div>
 <div class="form-group">
 		<div class="form-check">
-			<input class="form-check-input" type="checkbox" value="0" id="status" name="status">
+<!-- 			<input class="form-check-input" type="checkbox" value="0" id="status" name="status">
+			<label class="form-check-label" for="status">Completed</label> -->
+
+			<input class="form-check-input" type="checkbox" id="status" name="status" value="0" {{old('status',isset($task) ? $task->status:'') == 1 ? 'checked' : ''}}>
 			<label class="form-check-label" for="status">Completed</label>
 		</div>
 	</div>

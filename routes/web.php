@@ -27,8 +27,8 @@ Route::post('/tasks', function () {
 	];
 
 	$taskcreateValidateMessages = [
-		'type.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'type'".').focus()"> <i>ประเภทงาน</i> <b>ด้วยครับ</b>',
-		'name.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'name'".').focus()"> <i>ชื่องาน</i> <b>ด้วยครับ</b>',
+		'type.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'type'".').focus()"><i>ประเภทงาน</i> <b>ด้วยครับ</b>',
+		'name.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'name'".').focus()"> <i>ชื่องาน</i><b>ด้วยครับ</b>',
 	];
 
 	request()->validate($taskCreateValidateRules, $taskcreateValidateMessages);
