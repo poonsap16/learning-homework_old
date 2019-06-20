@@ -8,7 +8,12 @@
     <title>@yield('title')</title>
 </head>
 <body>
-
+	@if(Auth::user())
+	<form action="{{ url('logout') }}" method="POST">
+		<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		<input type="submit" name="submit" value="Logout">
+	</form>
+	@endif
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <a class="navbar-brand" href="#">{{ env('APP_NAME') }}</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

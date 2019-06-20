@@ -18,7 +18,7 @@ Route::get('/', function () {
 // Route::get('/tasks', function () {
 //     return view('index')->with(['tasks' => \App\Task::all()]);
 // });
-Route::get('/tasks','TaskController@index');
+Route::get('/tasks','TaskController@index')->middleware('auth');
 
 // Route::post('/tasks', function () {
 
@@ -78,3 +78,7 @@ Route::get('tasks/{id}','TaskController@edit');
 // });
 Route::put('tasks/{id}','TaskController@update');
 Route::delete('tasks/{id}','TaskController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

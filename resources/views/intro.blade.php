@@ -7,3 +7,7 @@
        	<h1>Learning and practice.</h1>
  		<p><h4>Just do it!</h4></p> 
 	</div>
+
+@section('contents')
+
+@endsection
