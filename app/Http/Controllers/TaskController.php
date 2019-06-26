@@ -13,7 +13,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function _construct(){
+    public function __construct(){
         $this->middleware('auth');
     }
     public function index()

@@ -18,7 +18,7 @@ Route::get('/', function () {
 // Route::get('/tasks', function () {
 //     return view('index')->with(['tasks' => \App\Task::all()]);
 // });
-Route::get('/tasks','TaskController@index')->middleware('auth');
+Route::get('/tasks','TaskController@index');
 
 // Route::post('/tasks', function () {
 
