@@ -28,7 +28,7 @@
 	@csrf
 <div class="form-row">
 	<div class="form-group col-md-6">
-		<label for="type">ประเภทงาน</label>
+		<label for="type_id">ประเภทงาน</label>
 <!-- 		<select id="type" class="form-control" name="type">
 			<option value="" selected>เลือกประเภทงาน</option>
 			<option value="1" {{ old('type') == 1 ? 'selected' : ''}}>Maintenance</option>
@@ -37,13 +37,25 @@
 			<option value="4" {{ old('type') == 4 ? 'selected' : ''}}>Activity</option>
 		</select> -->
 
-            <select class="form-control" id="type" name="type">
+            <!-- <select class="form-control" id="type" name="type">
             	<option value="" hidden select>เลือกประเภทงาน</option>
                 <option value="1" {{old('type',isset($task) ? $task->type:'') == 1 ? 'selected' : ''}}>Maintenance</option>
                 <option value="2" {{old('type',isset($task) ? $task->type:'') == 2 ? 'selected' : ''}}>Support</option>
                 <option value="3" {{old('type',isset($task) ? $task->type:'') == 3 ? 'selected' : ''}}>RFID</option>
                 <option value="4" {{old('type',isset($task) ? $task->type:'') == 4 ? 'selected' : ''}}>Activity</option>
-            </select>
+            </select> -->
+
+			<select class="form-control" name="type_id">
+				<option value="" hidden></option>
+				@foreach($types as $type)
+					@if( old('type_id', isset($task) ? $task->type_id : '') ==  $type['id'])
+						<option value="{{ $type['id'] }}" selected> {{ $type['name'] }}</option>
+					@else
+						<option value="{{ $type['id'] }}"> {{ $type['name'] }}</option>					
+					@endif
+				@endforeach
+			</select>
+
                 @error('type')
                 	<small class = "form-text text-danger">{{ $message }} </small>
                 @enderror

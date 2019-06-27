@@ -8,7 +8,7 @@ class Task extends Model
 {
     //
     protected $fillable = [
-    	'type',
+    	'type_id',
     	'name',
     	'detail',
     	'status',
@@ -32,5 +32,9 @@ class Task extends Model
     			return "Unknown";
     			break;
     	}
-    }
+	}
+	
+	public function type(){
+		return $this->belongsTo(Type::class);
+	}
 }

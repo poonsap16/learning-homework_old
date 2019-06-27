@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use \App\Task;
+use \App\Type;
 
 class TaskController extends Controller
 {
@@ -18,7 +19,9 @@ class TaskController extends Controller
     }
     public function index()
     {
-        return view('index')->with(['tasks' => Task::all()]);
+        // $type = \App\Type::all();
+
+        return view('index')->with(['tasks' => Task::all(), 'types' => Type::all()]);
     }
 
     /**
@@ -29,12 +32,12 @@ class TaskController extends Controller
     public function create()
     {
             $taskCreateValidateRules = [
-        'type' => 'required',
+        'type_id' => 'required',
         'name' => 'required'
     ];
 
     $taskcreateValidateMessages = [
-        'type.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'type'".').focus()"><i>ประเภทงาน</i> <b>ด้วยครับ</b>',
+        'type_id.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'type_id'".').focus()"><i>ประเภทงาน</i> <b>ด้วยครับ</b>',
         'name.required' => 'ลงข้อมูล <a style="cursor: pointer;" onclick="document.getElementById('. "'name'".').focus()"> <i>ชื่องาน</i><b>ด้วยครับ</b>',
     ];
 
@@ -101,7 +104,7 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         $validation = $request->validate([
-        'type' => 'required',
+        'type_id' => 'required',
         'name' => 'required|max:255'
     
     ]);
