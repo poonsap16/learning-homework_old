@@ -35,8 +35,10 @@
 		      	@endif
 		      </td>
 		      <td>
-		      	<a class="btn btn-sm btn-warning" role="button" href="{{ url('/tasks',$task->id) }}">Edit</a>
+			  	<button class="brn btn-sm btn-warning" role="button" href="{{ url('/tasks',$task->id) }}">Edit</button>
 		      </td>
+		      	<!-- <a class="brn btn-sm btn-warning" role="button" href="{{ url('/tasks',$task->id) }}">Edit</a>
+		      </td> -->
 <!-- 		      <td>
 		      	<a class="btn btn-sm btn-danger" role="button" href="{{ url('/tasks',$task->id) }}">Delete</a>
 		      </td>

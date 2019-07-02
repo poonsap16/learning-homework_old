@@ -31,7 +31,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-            $taskCreateValidateRules = [
+    $taskCreateValidateRules = [
         'type_id' => 'required',
         'name' => 'required'
     ];
@@ -88,10 +88,10 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-         $task = Task::find($id); 
-
+        $task = Task::find($id); 
         $tasks = Task::all();
-        return view('index')->with(['task' => $task,'tasks' => $tasks]);  
+        $types = Type::all();
+        return view('index')->with(['task' => $task,'tasks' => $tasks,'types' => $types]);  
     }
 
     /**
