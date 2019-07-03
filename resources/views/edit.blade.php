@@ -32,14 +32,24 @@
         <div class="form-group row">
             <label for="type" class="col-sm-2 col-form-label"><b>Job Type</b></label>
             <div class="col-sm-10">
-                <select class="form-control" id="type" name="type">
+<!--                 <select class="form-control" id="type" name="type">
                   <option value="" hidden select>เลือกประเภทงาน</option>
                     <option value="1">Hardware</option>
                     <option value="2">Software</option>
                     <option value="3">Network</option>
                     <option value="4">Virus</option>
                     <option value="5">Consult</option>
-                </select>
+                </select> -->
+                      <select class="form-control" name="type_id">
+        <option value="" hidden></option>
+        @foreach($types as $type)
+          @if( old('type_id', isset($task) ? $task->type_id : '') == $type['id'])
+            <option value="{{ $type['id'] }}" selected> {{ $type['name'] }}</option>
+          @else
+            <option value="{{ $type['id'] }}"> {{ $type['name'] }}</option>         
+          @endif
+        @endforeach
+      </select>
             </div>
         </div>
 

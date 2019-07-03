@@ -88,10 +88,13 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-         $task = Task::find($id); 
-
+        $task = Task::find($id); 
         $tasks = Task::all();
-        return view('index')->with(['task' => $task,'tasks' => $tasks]);  
+        $type = Type::find($id);
+        $types = Type::all();
+
+        return view('index')->with(['task' => $task,'tasks' => $tasks, 'type' => $type, 'types' => $types]);  
+
     }
 
     /**
