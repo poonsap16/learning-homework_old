@@ -13,6 +13,7 @@
 		      <th scope="col">ชื่องาน</th>
 		      <th scope="col">รายละเอียด</th>
 		      <th scope="col">สถานะ</th>
+		      <th scope="col">ผู้บันทึก</th>
 		    </tr>
 		</thead>
 		<tbody>
@@ -34,13 +35,13 @@
 		      		>ทำเสร็จแล้ว</button>
 		      	@endif
 		      </td>
+		      <td>{{ $task->user->name }}</td>
 		      <td>
-		      	<a class="btn btn-sm btn-warning" role="button" href="{{ url('/tasks',$task->id) }}">Edit</a>
+
+		      	<a class="brn btn-sm btn-warning" role="button" href="{{ url('/tasks',$task->id) }}">Edit</a>
 		      </td>
-<!-- 		      <td>
-		      	<a class="btn btn-sm btn-danger" role="button" href="{{ url('/tasks',$task->id) }}">Delete</a>
-		      </td>
- -->
+
+ 
 				<td><form method="POST" action="{{ url('/tasks', $task->id) }}">
 				    {{ csrf_field() }}
 				    {{ method_field('DELETE') }}

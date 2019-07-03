@@ -10,7 +10,8 @@ class Task extends Model
     protected $fillable = [
     	'type_id',
     	'name',
-    	'detail',
+		'detail',
+		'user_id',
     	'status',
     ];
 
@@ -34,7 +35,12 @@ class Task extends Model
     	}
 	}
 	
-	public function type(){
-		return $this->belongsTo(Type::class);
-	}
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
+

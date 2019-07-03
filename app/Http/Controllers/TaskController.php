@@ -31,7 +31,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-            $taskCreateValidateRules = [
+    $taskCreateValidateRules = [
         'type_id' => 'required',
         'name' => 'required'
     ];
@@ -44,7 +44,7 @@ class TaskController extends Controller
     request()->validate($taskCreateValidateRules, $taskcreateValidateMessages);
 
 
-    $data = request()->all();
+    $data = (request()->all()+['user_id' => \Auth::id()]);
 
     if(request()->has('status')) {
         $data['status'] = true;
@@ -90,10 +90,10 @@ class TaskController extends Controller
     {
         $task = Task::find($id); 
         $tasks = Task::all();
-        $type = Type::find($id);
+
         $types = Type::all();
 
-        return view('index')->with(['task' => $task,'tasks' => $tasks, 'type' => $type, 'types' => $types]);  
+        return view('index')->with(['task' => $task,'tasks' => $tasks,'types' => $types]);  
 
     }
 

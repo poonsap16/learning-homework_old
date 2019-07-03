@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/add-type', function(){
+	return view('add_type');
+});
+Route::post('/add-type','TypesController@create');
 
 Route::get('/', function () {
     return view('intro');

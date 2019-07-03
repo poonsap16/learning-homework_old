@@ -40,7 +40,7 @@
                     <option value="4">Virus</option>
                     <option value="5">Consult</option>
                 </select> -->
-                      <select class="form-control" name="type_id">
+        <select class="form-control" name="type_id">
         <option value="" hidden></option>
         @foreach($types as $type)
           @if( old('type_id', isset($task) ? $task->type_id : '') == $type['id'])
